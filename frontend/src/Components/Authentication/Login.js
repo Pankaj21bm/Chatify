@@ -10,7 +10,7 @@ const Login = () => {
   const [loading, setLoading] = useState(false);
   const [shouldRefresh, setShouldRefresh] = useState(false);
   const navigate = useNavigate();
-    const toast = useToast();
+  const toast = useToast();
 
   useEffect(() => {
     if (shouldRefresh) {
@@ -23,7 +23,7 @@ const Login = () => {
 
   const submitHandler = async () => {
     setLoading(true);
-    if (!email || !password) { 
+    if (!email || !password) {
       alert("Please fill all the fields");
       setLoading(false);
       return;
@@ -35,10 +35,8 @@ const Login = () => {
           "Content-type": "application/json",
         },
       };
-
-      const host = "http://localhost:5000";
       const { data } = await axios.post(
-        `${host}/api/user/login`,
+        `${process.env.REACT_APP_BACKEND_URL}/api/user/login`,
         { email, password },
         config
       );

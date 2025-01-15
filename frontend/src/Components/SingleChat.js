@@ -23,7 +23,6 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPaperPlane } from "@fortawesome/free-solid-svg-icons";
 import bigdoodle from "../assets/bigdoodle.jpg"
 
-const ENDPOINT = "http://localhost:5000";
 let socket, selectedChatCompare;
 
 const SingleChat = ({ fetchAgain, setFetchAgain }) => {
@@ -130,7 +129,7 @@ const SingleChat = ({ fetchAgain, setFetchAgain }) => {
 
   useEffect(() => {
     if (!socketConnected) {
-      socket = io(ENDPOINT);
+      socket = io(process.env.REACT_APP_BACKEND_URL);
       socket.emit("setup", user);
       socket.on("connected", () => setSocketConnected(true));
     }

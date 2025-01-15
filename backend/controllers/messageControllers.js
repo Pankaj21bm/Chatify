@@ -3,19 +3,6 @@ import Message from "../models/messageModel.js";
 import User from "../models/userModel.js";
 import Chat from "../models/chatModel.js";
 
-// const allMessages = asyncHandler(async (req, res) => {
-//   try {
-//     const messages = await Message.find({ chat: req.params.chatId })
-//       .populate("sender", "name photo email")
-//       .populate("chat");
-//     res.json(messages);
-//   } catch (error) {
-//     res.status(400);
-//     throw new Error(error.message);
-//   }
-// });
-
-
 const allMessages = asyncHandler(async (req, res) => {
   try {
     const limit = parseInt(req.query.limit) || 50; // Default to 50 messages

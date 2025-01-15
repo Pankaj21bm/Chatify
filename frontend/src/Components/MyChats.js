@@ -2,23 +2,15 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { ChatState } from "../context/chatProvider";
 
-import {
-  Box,
-  Button,
-  Stack,
-  Text,
-  useMediaQuery,
-  useToast,
-} from "@chakra-ui/react";
+import { Box, Button, Stack, Text, useMediaQuery, useToast, } from "@chakra-ui/react";
 import { AddIcon } from "@chakra-ui/icons";
 import ChatLoading from "./ChatLoading.js";
 import { getSender } from "../config/ChatLogics.js";
 import GroupChatModal from "./GroupChatModal.js";
 
-import io from "socket.io-client"; //
-const ENDPOINT = "http://localhost:5000";//
-let socket;//
- 
+import io from "socket.io-client";
+let socket;
+
 const MyChats = ({ fetchAgain }) => {
   const [loggedUser, setLoggedUser] = useState();
 
@@ -30,7 +22,7 @@ const MyChats = ({ fetchAgain }) => {
   );
 
   const toast = useToast();
-  
+
   const fetchChats = async () => {
     try {
       const config = {
@@ -39,7 +31,7 @@ const MyChats = ({ fetchAgain }) => {
         },
       };
       const { data } = await axios.get(
-        `${process.env.REACT_APP_HOST}/api/chat`,
+        `${process.env.REACT_APP_BACKEND_URL}/api/chat`,
         config
       );
       setChats(data);
@@ -48,7 +40,7 @@ const MyChats = ({ fetchAgain }) => {
         title: "Error Occurred",
         description: "Failed to Load the chats",
         status: "error",
-        duration: 2000, 
+        duration: 2000,
         isClosable: true,
         position: "bottom-left",
       });
@@ -57,7 +49,7 @@ const MyChats = ({ fetchAgain }) => {
   useEffect(() => {
     setLoggedUser(JSON.parse(localStorage.getItem("userInfo")));
     fetchChats();
-  }, [fetchAgain,selectedChat]);
+  }, [fetchAgain, selectedChat]);
 
   return (
     <Box
@@ -82,8 +74,8 @@ const MyChats = ({ fetchAgain }) => {
               ? "15px"
               : "20px"
             : isMediumScreen
-            ? "25px"
-            : "30px"
+              ? "25px"
+              : "30px"
         }
         display={"flex"}
         w="100%"
@@ -98,7 +90,7 @@ const MyChats = ({ fetchAgain }) => {
             rightIcon={<AddIcon />}
             bg={"green.400"}
             color={"white"}
-            _hover={{bg:"green.300"}}
+            _hover={{ bg: "green.300" }}
           >
             New Group
           </Button>

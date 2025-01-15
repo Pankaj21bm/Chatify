@@ -13,14 +13,16 @@ dotenv.config();
 
 const app = express();
 
-connectDB();
+try {
+  connectDB();
+  console.log("database connected");  
+} catch (error) {
+  console.log(error)
+}
+
 
 app.use(cors());
-
-
-
 app.use(express.json());
-
 app.use("/api/user", userRoutes);
 app.use("/api/chat", chatRoutes);
 app.use("/api/message", messageRoutes);
