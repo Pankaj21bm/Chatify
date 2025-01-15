@@ -15,7 +15,7 @@ const app = express();
 
 try {
   connectDB();
-  console.log("database connected");  
+  console.log("database connected");
 } catch (error) {
   console.log(error)
 }
@@ -26,6 +26,18 @@ app.use(express.json());
 app.use("/api/user", userRoutes);
 app.use("/api/chat", chatRoutes);
 app.use("/api/message", messageRoutes);
+
+const __dirname1 = path.resolve();
+if (process.env.NODE_ENV === "production") {
+  app.use(express.static(path.join(__dirname1, "frontend", "build")));
+  app.get("*", (req, res) => {
+    res.sendFile(path.resolve(__dirname1, "frontend", "build", "index.html")); 
+  });
+} else {
+  app.get("/", (req, res) => {
+    res.send("Our API is running fine");
+  });
+}
 
 app.use(notFound);
 app.use(errorHandler);
@@ -41,12 +53,12 @@ const server = app.listen(
 const io = new Server(server, {
   cors: {
     origin: "*",
-    credentials:true,
+    credentials: true,
   },
 });
- 
+
 io.on("connection", (socket) => {
-  console.log("Socket ",socket.id," Connected to socket.io");
+  console.log("Socket ", socket.id, " Connected to socket.io");
 
   socket.on("setup", (userData) => {
     socket.join(userData._id);
@@ -58,12 +70,12 @@ io.on("connection", (socket) => {
     console.log("User Joined Room: " + room);
   });
 
-  socket.on("typing", (room) => socket.in(room._id).emit("typing",room));
+  socket.on("typing", (room) => socket.in(room._id).emit("typing", room));
 
-  socket.on("stop typing", (room) => socket.in(room._id).emit("stop typing",room));
+  socket.on("stop typing", (room) => socket.in(room._id).emit("stop typing", room));
 
   socket.on("new message", (newMessageRecieved) => {
-    console.log("new message sent");    
+    console.log("new message sent");
     var chat = newMessageRecieved.chat;
     if (!chat.users) return console.log("chat.users not defined");
     socket.to(chat._id).emit("message received", newMessageRecieved);
