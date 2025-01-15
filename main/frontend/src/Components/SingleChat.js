@@ -21,6 +21,7 @@ import SpeechToText from "./SpeectToText.js";
 import io from "socket.io-client";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPaperPlane } from "@fortawesome/free-solid-svg-icons";
+import bigdoodle from "../assets/bigdoodle.jpg"
 
 const ENDPOINT = "http://localhost:5000";
 let socket, selectedChatCompare;
@@ -62,11 +63,9 @@ const SingleChat = ({ fetchAgain, setFetchAgain }) => {
       if (isPagination) {
         setMessages((prevMessages) => [...data, ...prevMessages]);
         setIisAddedBefore(true);
-        console.log("ispagination true");
       } else {
         setMessages(data);
         // setIisAddedBefore(false);
-        console.log("ispagination false");
         socket.emit("join chat", selectedChat._id);
       }
     } catch (error) {
@@ -161,7 +160,6 @@ const SingleChat = ({ fetchAgain, setFetchAgain }) => {
   }, [selectedChat]);
 
   const handleNewMessage = (newMessageReceived) => {
-    console.log("new  message received: ", newMessageReceived);
     if (
       !selectedChat ||
       (selectedChat && selectedChat._id !== newMessageReceived.chat._id)
@@ -178,7 +176,6 @@ const SingleChat = ({ fetchAgain, setFetchAgain }) => {
       setFetchAgain((prev) => !prev);
     } else {
       setMessages((prevMessages) => {
-        console.log("Adding to messages:");
         return [...prevMessages, newMessageReceived];
       });
       setFetchAgain((prev) => !prev);
@@ -284,7 +281,7 @@ const SingleChat = ({ fetchAgain, setFetchAgain }) => {
             h="100%"
             borderRadius="lg"
             overflowY="auto"
-            backgroundImage="url('../assets/bigdoodle.jpg')"
+            backgroundImage= {bigdoodle}
             backgroundSize="cover"
             backgroundRepeat="repeat"
           >

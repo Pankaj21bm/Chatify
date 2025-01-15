@@ -1,13 +1,13 @@
 {
   "files": {
     "main.css": "/Chatify/static/css/main.c72df95c.css",
-    "main.js": "/Chatify/static/js/main.83552031.js",
+    "main.js": "/Chatify/static/js/main.ecefa493.js",
     "index.html": "/Chatify/index.html",
     "main.c72df95c.css.map": "/Chatify/static/css/main.c72df95c.css.map",
-    "main.83552031.js.map": "/Chatify/static/js/main.83552031.js.map"
+    "main.ecefa493.js.map": "/Chatify/static/js/main.ecefa493.js.map"
   },
   "entrypoints": [
     "static/css/main.c72df95c.css",
-    "static/js/main.83552031.js"
+    "static/js/main.ecefa493.js"
   ]
 }

@@ -37,7 +37,6 @@ const ScrollableChat = ({ messages, fetchMessages, isAddedBefore }) => {
 
   useEffect(() => {
     const container = chatContainerRef.current;
-    console.log("current selected chat is :", selectedChat?.chatName);
     if (container) {
       container.removeEventListener("scroll", debouncedHandleScroll);
       container.addEventListener("scroll", debouncedHandleScroll);
