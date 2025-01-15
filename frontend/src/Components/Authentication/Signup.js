@@ -63,7 +63,8 @@ const Signup = () => {
       })
         .then((res) => res.json())
         .then((data) => {
-          setPhoto(data.url.toString());
+          const data1 = data.replace('http://', 'https://');
+          setPhoto(data1.url.toString());
           setLoading(false);
         })
         .catch((err) => {
