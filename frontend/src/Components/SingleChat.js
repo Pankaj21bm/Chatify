@@ -30,8 +30,7 @@ const SingleChat = ({ fetchAgain, setFetchAgain }) => {
   const [messages, setMessages] = useState([]);
   const [loading, setLoading] = useState(false);
   const [newMessage, setNewMessage] = useState("");
-  // const [socketConnected, setSocketConnected] = useState(false);
-  let socketConnected = false;
+  const [socketConnected, setSocketConnected] = useState(false);
   const [typing, setTyping] = useState(false);
   const [istyping, setIsTyping] = useState(false);
   const [isAddedBefore, setIisAddedBefore] = useState(true);
@@ -133,10 +132,9 @@ const SingleChat = ({ fetchAgain, setFetchAgain }) => {
     if (!socketConnected) {
       socket = io(ENDPOINT);
       socket.emit("setup", user);
-      // socket.on("connected", () => setSocketConnected(true));
-      socket.on("connected", () => socketConnected = true);
+      socket.on("connected", () => setSocketConnected(true));
     }
-  }, [user]);
+  }, [user, socketConnected]);
 
   const handleStartTyping = (chat) => {
     if (!selectedChat) {
