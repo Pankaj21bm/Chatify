@@ -1,6 +1,5 @@
 import express from "express";
 import dotenv from "dotenv";
-import chats from "./data/data.js";
 import connectDB from "./config/db.js";
 import colors from "colors";
 import userRoutes from "./routes/userRoutes.js";
@@ -62,12 +61,9 @@ io.on("connection", (socket) => {
   socket.on("stop typing", (room) => socket.in(room._id).emit("stop typing",room));
 
   socket.on("new message", (newMessageRecieved) => {
-    console.log("new message sent")
-    
+    console.log("new message sent");    
     var chat = newMessageRecieved.chat;
-
     if (!chat.users) return console.log("chat.users not defined");
-
     socket.to(chat._id).emit("message received", newMessageRecieved);
   });
 
