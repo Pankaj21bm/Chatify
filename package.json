@@ -1,0 +1,7 @@
+{
+  "dependencies": {
+    "axios": "^1.7.9",
+    "react-infinite-scroll-component": "^6.1.0"
+  },
+  "proxy": "http://localhost:5000"
+}

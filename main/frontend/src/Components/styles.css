@@ -1,0 +1,50 @@
+.chat-container ::-webkit-scrollbar {
+  width: 5px;
+  margin-left: 10px;
+  height: 100%;
+  border-radius: 10px;
+  background-color: #eff6f9db;
+}
+
+.chat-container ::-webkit-scrollbar-thumb {
+  background: #09101824;
+  border-radius: 10px;
+}
+
+.chat-container ::-webkit-scrollbar-thumb:hover {
+  background: #0101138f;
+  border-radius: 10px;
+}
+.chat-container ::-webkit-scrollbar-track {
+  background: transparent;
+  border-radius: 10px;
+}
+.notification-badge {
+  position: relative;
+  display: inline-block;
+}
+
+.badge {
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color: red;
+  color: white;
+  border-radius: 50%;
+  padding: 0px 5px 0px 5px;
+}
+
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+.fade-in {
+  animation: fadeIn 0.5s ease-in-out;
+}
