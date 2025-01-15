@@ -23,7 +23,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPaperPlane } from "@fortawesome/free-solid-svg-icons";
 import bigdoodle from "../assets/bigdoodle.jpg"
 
-const ENDPOINT = "http://localhost:5000";
+const ENDPOINT = "https://chatify-backend-2eyg.onrender.com";
 let socket, selectedChatCompare;
 
 const SingleChat = ({ fetchAgain, setFetchAgain }) => {
