@@ -16,7 +16,7 @@ import { getSender } from "../config/ChatLogics.js";
 import GroupChatModal from "./GroupChatModal.js";
 
 import io from "socket.io-client"; //
-const ENDPOINT = "http://localhost:5000";//
+const ENDPOINT = "https://chatify-backend-2eyg.onrender.com";//
 let socket;//
  
 const MyChats = ({ fetchAgain }) => {
