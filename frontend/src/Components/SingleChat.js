@@ -1,6 +1,5 @@
 import {
   FormControl,
-  Input,
   Textarea,
   Box,
   Text,
@@ -23,7 +22,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPaperPlane } from "@fortawesome/free-solid-svg-icons";
 import bigdoodle from "../assets/bigdoodle.jpg"
 
-let socket, selectedChatCompare;
+let socket;
 
 const SingleChat = ({ fetchAgain, setFetchAgain }) => {
   const [messages, setMessages] = useState([]);
@@ -35,7 +34,7 @@ const SingleChat = ({ fetchAgain, setFetchAgain }) => {
   const [isAddedBefore, setIisAddedBefore] = useState(true);
   const toast = useToast();
 
-  const { user, selectedChat, setSelectedChat, notification, setNotification } =
+  const { user, selectedChat, setSelectedChat, setNotification } =
     ChatState();
 
   const handleSpeechResult = (result) => {

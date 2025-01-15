@@ -26,7 +26,7 @@ import {
 import { ArrowBackIcon } from "@chakra-ui/icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSearch } from "@fortawesome/free-solid-svg-icons";
-import { BellIcon, ChevronDownIcon } from "@chakra-ui/icons";
+import { BellIcon } from "@chakra-ui/icons";
 import { ChatState } from "../context/chatProvider.js";
 import ProfileModal from "./ProfileModal.js";
 import { useNavigate } from "react-router-dom";
@@ -45,7 +45,6 @@ const SideDrawer = ({ fetchAgain, setFetchAgain }) => {
 
   const {
     user,
-    selectedChat,
     setSelectedChat,
     chats,
     setChats,

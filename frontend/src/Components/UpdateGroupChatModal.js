@@ -14,7 +14,6 @@ import {
   useToast,
   Box,
   IconButton,
-  Spinner,
   useMediaQuery,
   Text,
 } from "@chakra-ui/react";

@@ -1,4 +1,4 @@
-import React, { useRef, useEffect, useState, memo } from "react";
+import React, { useRef, useEffect, useState } from "react";
 import { ChatState } from "../context/chatProvider.js";
 import { Avatar, Tooltip, Text as ChakraText, Spinner } from "@chakra-ui/react";
 import {
@@ -132,7 +132,7 @@ const ScrollableChat = ({ messages, fetchMessages, isAddedBefore }) => {
                   marginTop: isSameUser(messages, message, ind, user._id) ? 3 : 10,
                   borderRadius: `10px ${message.sender._id === user._id ? "0px" : "10px"} 10px ${message.sender._id === user._id ? "10px" : "0px"}`,
                   padding: "3px 10px",
-                  marginBottom: (ind == messages.length - 1) ? "5px" : "0px",
+                  marginBottom: (ind === messages.length - 1) ? "5px" : "0px",
                   maxWidth: "75%",
                   boxShadow: "0 4px 10px rgba(0, 0, 0, 0.2)",
                   position: "relative",

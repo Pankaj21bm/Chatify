@@ -20,7 +20,6 @@ const ProfileModal = ({ user, children }) => {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const [isSmallScreen] = useMediaQuery("(max-width: 576px)");
   const [isVerySmallScreen] = useMediaQuery("(max-width: 405px)");
-  const [name, setName] = useState("");
   
   return (
     <>

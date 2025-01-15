@@ -8,9 +8,6 @@ import ChatLoading from "./ChatLoading.js";
 import { getSender } from "../config/ChatLogics.js";
 import GroupChatModal from "./GroupChatModal.js";
 
-import io from "socket.io-client";
-let socket;
-
 const MyChats = ({ fetchAgain }) => {
   const [loggedUser, setLoggedUser] = useState();
 
@@ -46,10 +43,11 @@ const MyChats = ({ fetchAgain }) => {
       });
     }
   };
+
   useEffect(() => {
     setLoggedUser(JSON.parse(localStorage.getItem("userInfo")));
     fetchChats();
-  }, [fetchAgain, selectedChat]);
+  }, [fetchAgain, selectedChat]); //add fetch chats into this
 
   return (
     <Box
@@ -59,7 +57,6 @@ const MyChats = ({ fetchAgain }) => {
       p={3}
       bg="white"
       w={{ base: "100%", md: isMediumScreen ? "40%" : "31%" }}
-      // w={isSmallScreen ? "100%" : "50%"}
       borderRadius="lg"
       borderWidth={"2px"}
       boxShadow=" 0 0 10px #020161f1"
@@ -112,8 +109,8 @@ const MyChats = ({ fetchAgain }) => {
               <Box
                 onClick={() => setSelectedChat(chat)}
                 cursor="pointer"
-                bg={selectedChat?._id == chat?._id ? "#419fd9" : "#fff"}
-                color={selectedChat?._id == chat?._id ? "white" : "black"}
+                bg={selectedChat?._id === chat?._id ? "#419fd9" : "#fff"}
+                color={selectedChat?._id === chat?._id ? "white" : "black"}
                 px={3}
                 py={2}
                 borderRadius="lg"
