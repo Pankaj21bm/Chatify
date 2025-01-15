@@ -47,7 +47,7 @@ const UpdateProfileModal = ({ user, fetchAgain, setFetchAgain, children }) => {
         },
       };
       const { data } = await axios.put(
-        `/api/user/updatename`,
+        `${process.env.REACT_APP_BACKEND_URL}/api/user/updatename`,
         {
           userId: user._id,
           userName: newName,
@@ -91,7 +91,7 @@ const UpdateProfileModal = ({ user, fetchAgain, setFetchAgain, children }) => {
         },
       };
       const { data } = await axios.put(
-        `/api/user/updatepicture`,
+        `${process.env.REACT_APP_BACKEND_URL}/api/user/updatepicture`,
         {
           userId: user._id,
           userPhoto: photo,

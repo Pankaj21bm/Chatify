@@ -52,7 +52,7 @@ const SingleChat = ({ fetchAgain, setFetchAgain }) => {
       };
 
       const { data } = await axios.get(
-        `/api/message/${selectedChat._id}?limit=50&offset=${offset}`,
+        `${process.env.REACT_APP_BACKEND_URL}/api/message/${selectedChat._id}?limit=50&offset=${offset}`,
         config
       );
 
@@ -100,7 +100,7 @@ const SingleChat = ({ fetchAgain, setFetchAgain }) => {
         const messageContentWithNewlines = newMessage.replace(/\n/g, "<br>");
 
         const { data } = await axios.post(
-          "/api/message",
+          `${process.env.REACT_APP_BACKEND_URL}/api/message`,
           {
             content: messageContentWithNewlines,
             chatId: selectedChat,
