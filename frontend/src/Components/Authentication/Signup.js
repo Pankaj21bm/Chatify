@@ -118,7 +118,7 @@ const Signup = () => {
       };
 
       const body = { name, email, password, photo };
-      const host = "http://localhost:5000";
+      const host = "https://chatify-backend-2eyg.onrender.com";
 
       const { data } = await axios.post(
         `${host}/api/user`,
