@@ -28,13 +28,11 @@ app.use("/api/chat", chatRoutes);
 app.use("/api/message", messageRoutes);
 
 const __dirname1 = path.resolve();
-console.log(process.env.NODE_ENV)
 if (process.env.NODE_ENV === "production") {
-  console.log("haha i am currently in the production")
-  console.log(path.join(__dirname1, "../frontend/build"))
-  app.use(express.static(path.join(__dirname1, "../frontend/build")));
+  console.log(path.resolve(__dirname1, "frontend", "build", "index.html"));
+  app.use(express.static(path.join(__dirname1, "frontend/build")));
   app.get("*", (req, res) => {
-    res.sendFile(path.resolve(__dirname1, "../frontend/build/index.html"));
+    res.sendFile(path.resolve(__dirname1, "frontend", "build", "index.html"));
   });
 } else {
   app.get("/", (req, res) => {
@@ -44,9 +42,7 @@ if (process.env.NODE_ENV === "production") {
 
 app.use(notFound);
 app.use(errorHandler);
-
 const port = process.env.PORT || 5000;
-
 const server = app.listen(
   port,
   console.log(`The server started at http://localhost:${port}`.blue.bold.italic)
